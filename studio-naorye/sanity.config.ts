@@ -6,8 +6,8 @@ import {schemaTypes} from './schemaTypes'
 export default defineConfig({
   name: 'default',
   title: 'studio-naorye',
-  projectId: import.meta.env.PUBLIC_SANITY_PROJECT_ID,
-  dataset: import.meta.env.PUBLIC_SANITY_DATASET,
+  projectId: 'q9our54l',
+  dataset: 'production',
 
   plugins: [structureTool(), visionTool()],
 

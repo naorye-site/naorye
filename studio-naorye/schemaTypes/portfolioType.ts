@@ -6,57 +6,57 @@ export const portfolioType = defineType({
   type: 'document',
   fields: [
     defineField({
-      name: 'Upload Date',
+      name: 'uploadDate',
       type: 'datetime',
     }),
     defineField({
-      name: 'Theme name',
+      name: 'themeName',
       type: 'string',
     }),
     defineField({
-      name: 'Collection name',
+      name: 'collectionName',
       type: 'string',
     }),
     defineField({
-      name: 'Description',
+      name: 'description',
       type: 'string',
     }),
     defineField({
-      name: 'Portfolio cover',
+      name: 'portfolioCover',
       type: 'image',
     }),
     defineField({
-      name: 'Portfolio images',
+      name: 'portfolioImages',
       type: 'array',
       of: [{ type: 'image'}],
       validation: (Rule) => Rule.max(20).required(),
     }),
     defineField({
-      name: 'Version available',
+      name: 'versionAvailable',
       type: 'array',
       of: [{type: 'string'}],
       validation: (Rule) => Rule.max(3).required(),
     }),
     defineField({
-      name: 'Use cases',
+      name: 'useCases',
       type: 'array',
       of: [{type: 'string'}],
       validation: (Rule) => Rule.max(10).required(),
     }),
     defineField({
-      name: 'Software',
+      name: 'software',
       type: 'array',
       of: [{type: 'string'}],
       validation: (Rule) => Rule.max(20).required(),
     }),
     defineField({
-      name: 'Format available',
+      name: 'formatAvailable',
       type: 'array',
       of: [{type: 'string'}],
       validation: (Rule) => Rule.max(20).required(),
     }),
     defineField({
-      name: 'More information',
+      name: 'moreInformation',
       type: 'array',
       of: [{type: 'string'}],
       validation: (Rule) => Rule.max(20).required(),

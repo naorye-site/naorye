@@ -12,8 +12,8 @@ export default defineConfig({
     mdx(),
     sitemap(),
     sanity({
-      projectId: import.meta.env.PUBLIC_SANITY_PROJECT_ID,
-      dataset: import.meta.env.PUBLIC_SANITY_DATASET,
+      projectId: 'q9our54l',
+      dataset: 'production',
       useCdn: false,
       studioBasePath: "/studio",
       apiVersion: "2026-04-04",
