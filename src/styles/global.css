@@ -21,17 +21,17 @@
     0 16px 32px rgba(var(--gray), 33%);
 }
 @font-face {
-  font-family: "Racing";
-  src: url("/fonts/RacingSansOne-Regular.ttf") format("ttf");
+  font-family: "RacingSansOne";
+  src: url("/fonts/RacingSansOne-Regular.ttf") format("truetype");
   font-display: swap;
 }
 @font-face {
-  font-family: "Albert";
-  src: url("/fonts/AlbertSans-VariableFont_wght.ttf") format("ttf");
+  font-family: "AlbertSans";
+  src: url("/fonts/AlbertSans-VariableFont_wght.ttf") format("truetype");
   font-display: swap;
 }
 body {
-  font-family: "Albert", sans-serif;
+  font-family: "AlbertSans", sans-serif;
   padding: 0;
   margin: 5rem 4rem;
   text-align: left;
@@ -43,17 +43,22 @@ body {
   font-size: 20px;
   line-height: 1.7;
 }
-main {
-  margin-block: 2.5rem;
-  text-align: center;
-  max-width: calc(100% - 2em);
+
+@media (width <= 480px) {
+  body {
+    margin: 1rem;
+  }
 }
-#container{
-	gap: 2.5rem;
-	display:grid;
-	grid-auto-rows: 1fr;
-	justify-content: center;
-	grid-template-columns: 1fr;
+
+/* main {
+  max-width: calc(100% - 2em);
+} */
+#container {
+  gap: 2.5rem;
+  display: grid;
+  grid-auto-rows: 1fr;
+  justify-content: center;
+  grid-template-columns: 1fr;
 }
 
 h1,
@@ -62,10 +67,9 @@ h3,
 h4,
 h5,
 h6 {
-  margin: 0 0 0.5rem 0;
-  color: var(--black);
   line-height: 1.2;
-  font-family: "Racing", sans-serif;
+  color: var(--brown);
+  font-family: "RacingSansOne", sans-serif;
 }
 h1 {
   font-size: 3.052em;

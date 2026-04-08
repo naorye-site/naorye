@@ -1,0 +1,97 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Header />
+    <main>
+      <div id="container">
+        <div class="who-section">
+          <h1>WHO</h1>
+          <p><strong>/ˈnaʊr.jeɪ/ (“Naur-ye” or “Nour-ye”) </strong></p>
+          <p>
+            <strong
+              >Empathy. Growth. Grace. Technology. Humanity.</strong
+            >
+          </p>
+          <p>
+            Crafted where empathy meets innovation. Designed to help creators grow with grace — through art that’s
+            human, adaptive, but timeless.
+          </p>
+        </div>
+
+        <div class="faq-section">
+          <h1>FAQ</h1>
+          <div class="faq-item">
+            <strong>What do we sell?</strong>
+            <ul>
+              <li>Graphic bundles.</li>
+              <li>
+                We do commissions for custom bundles in Ko-fi <strong
+                  >(coming soon!)</strong
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="faq-item">
+            <strong>What will I get</strong>
+            <ul>
+              <li>Individual Bundle: Full-color graphics. OR —</li>
+              <li>Individual Bundle: Monochrome version. OR —</li>
+              <li>BIG Bundle version: all of the above are included.</li>
+              <li>
+                Individual Bundle: Pattern version <strong
+                  >(coming soon!)</strong
+                >
+              </li>
+              <li>
+                Various formats for each graphic: JPEG, PNG, SVG, EPS, PSD, AF,
+                and more!
+              </li>
+            </ul>
+          </div>
+          <div class="faq-item">
+            <strong>Licence details?</strong>
+            <ul>
+              <li>
+                Marketplace: We follow licensing rules in the marketplace.
+                Basically, you can use it for personal, commercial, or even
+                extended purposes.
+              </li>
+              <li>Commision: same~</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style>
+  #container {
+    grid-auto-rows: min-content;
+  }
+  .who-section,
+  .faq-section {
+    text-align: left;
+  }
+  .faq-item {
+    padding: 1.4em;
+    margin-bottom: 1em;
+    border-radius: 20px;
+    background-color: var(--white-peach);
+  }
+  .faq-item strong {
+    display: block;
+    color: var(--black);
+  }
+</style>

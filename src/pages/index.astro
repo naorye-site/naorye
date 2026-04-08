@@ -13,20 +13,27 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
   <body>
     <Header />
     <main>
-      <div id="container">
         <img src="/src/assets/NAORYE-noBG.png" alt="NAORYE logo" />
         <p>
           Crafted where empathy meets innovation. Designed to help creators grow
           — through art that’s human, adaptive, but timeless.
         </p>
-      </div>
     </main>
     <Footer />
   </body>
 </html>
 
 <style>
-  #container > img {
+  main{
+    margin-block: 5em;
+    gap: .5em;
+    display: flex;
+    flex-direction: column;
+  }
+  img {
     width: 100%;
+  }
+  p{
+    text-align: center;
   }
 </style>

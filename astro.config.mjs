@@ -12,11 +12,9 @@ export default defineConfig({
     mdx(),
     sitemap(),
     sanity({
-      projectId: 'q9our54l',
-      dataset: 'production',
+      projectId: "q9our54l",
+      dataset: "production",
       useCdn: false,
-      studioBasePath: "/studio",
-      apiVersion: "2026-04-04",
     }),
   ],
   vite: {

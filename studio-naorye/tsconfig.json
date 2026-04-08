@@ -11,7 +11,8 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "types": ["vite/client"]
+    // "types": ["vite/client"]
+    "types": ["@sanity/astro/module"]
   },
   "include": ["**/*.ts", "**/*.tsx", "../env.d.ts",],
   "exclude": ["node_modules"]
