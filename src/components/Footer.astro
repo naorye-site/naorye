@@ -1,28 +1,29 @@
 ---
 const today = new Date();
+import { Icon } from 'astro-icon/components'; 
 ---
 
 <footer>
   &copy; {today.getFullYear()} NAORYE. All rights reserved.
   <div class="social-links">
-    <script
-      is:inline type="text/javascript"
-      src="https://storage.ko-fi.com/cdn/widget/Widget_2.js"></script><script
-      is:inline type="text/javascript"
-    >
-      kofiwidget2.init("", "#a15136", "U7U61O60CQ");
-      kofiwidget2.draw();
-    </script>
+    <a href="https://ko-fi.com/naorye_store">
+      <Icon name="cib:ko-fi" />
+    </a>
     <a href="https://id.pinterest.com/NAORYE_store/" target="_blank">
-      <span class="sr-only">Pinterest</span>
-      <!-- INSERT PINTEREST LOGO -->
+      <Icon name="cib:pinterest" />
     </a>
   </div>
 </footer>
 <style>
   footer {
+    font-size: 0.75rem;
     text-align: center;
     color: rgb(var(--gray));
+    font-size: clamp(
+      0.75rem,
+      0.7142857142857143rem + 0.17857142857142858vw,
+      1rem
+    );
   }
   .social-links {
     display: flex;
@@ -32,9 +33,8 @@ const today = new Date();
   }
   .social-links a {
     text-decoration: none;
-    color: rgb(var(--gray));
   }
-  .social-links a:hover {
-    color: rgb(var(--gray-dark));
+  [data-icon] {
+    font-size: 32px;
   }
 </style>
