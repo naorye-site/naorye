@@ -7,11 +7,22 @@ export const portfolioType = defineType({
   fields: [
     defineField({
       name: 'uploadDate',
-      type: 'datetime',
+      type: 'date',
+      options: {
+        dateFormat: 'DD-MMMM-YY',
+      },
     }),
     defineField({
       name: 'themeName',
       type: 'string',
+    }),
+    defineField({
+      name: 'slug',
+      title: 'Link name',
+      type: 'slug',
+      description: 'generate link name',
+      options: {source: 'themeName'},
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'collectionName',
@@ -28,7 +39,7 @@ export const portfolioType = defineType({
     defineField({
       name: 'portfolioImages',
       type: 'array',
-      of: [{ type: 'image'}],
+      of: [{type: 'image'}],
       validation: (Rule) => Rule.max(20).required(),
     }),
     defineField({

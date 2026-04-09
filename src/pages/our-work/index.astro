@@ -1,0 +1,93 @@
+---
+import { sanityClient } from "sanity:client";
+import type { SanityDocument } from "@sanity/client";
+import BaseHead from "../../components/BaseHead.astro";
+import Footer from "../../components/Footer.astro";
+import Header from "../../components/Header.astro";
+import { SITE_DESCRIPTION, SITE_TITLE } from "../../consts";
+
+// GROQ get all portfolio
+const PORTFOLIO_QUERY = `*[_type == "Portfolio"] {
+    _id, 
+    themeName, 
+    slug, 
+    uploadDate,
+    "imageUrl": portfolioCover.asset->url + "?w=600&auto=format"
+ }`;
+
+const portfolios = await sanityClient.fetch<SanityDocument[]>(PORTFOLIO_QUERY);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Header />
+    <main>
+      <h1>OUR WORK</h1>
+      <div id="cardContainer">
+        {
+          portfolios.map((portfolio: SanityDocument) => (
+            <a href={`/our-work/${portfolio.slug.current}`}>
+              <div class="card">
+                {portfolio.imageUrl && (
+                  <div class="image">
+                    <img src={portfolio.imageUrl} alt={portfolio.themeName} />
+                  </div>
+                )}
+                <div class="cardDetail">
+                  <strong class="cardTitle">{portfolio.themeName}</strong>
+                  <p class="date">{portfolio.uploadDate}</p>
+                </div>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style>
+  h1 {
+    text-align: left;
+  }
+
+  #cardContainer {
+    gap: 1em;
+    display: grid;
+    grid-auto-rows: min-content;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    margin-bottom: 2.5rem;
+    .card {
+      gap: 0.5em;
+      display: flex;
+      flex-direction: column;
+      .image {
+        width: 100%;
+        overflow: hidden;
+        aspect-ratio: 4/3;
+        border-radius: 16px;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+    .cardDetail {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .cardTitle {
+        margin: 0;
+      }
+      .date {
+        margin: 0;
+      }
+    }
+  }
+</style>
