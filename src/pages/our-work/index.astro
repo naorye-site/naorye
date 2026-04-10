@@ -31,7 +31,7 @@ const portfolios = await sanityClient.fetch<SanityDocument[]>(PORTFOLIO_QUERY);
       <div id="cardContainer">
         {
           portfolios.map((portfolio: SanityDocument) => (
-            <a href={`/our-work/${portfolio.slug.current}`}>
+            <a href={`${import.meta.env.BASE_URL}/our-work/${portfolio.slug.current}`}>
               <div class="card">
                 {portfolio.coverUrl && (
                   <div class="image">
