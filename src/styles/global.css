@@ -26,12 +26,12 @@ html {
 
 @font-face {
   font-family: "RacingSansOne";
-  src: url("../../public/fonts/RacingSansOne-Regular.ttf") format("truetype");
+  src: url(`${import.meta.env.BASE_URL}fonts/RacingSansOne-Regular.ttf`) format("truetype");
   font-display: swap;
 }
 @font-face {
   font-family: "AlbertSans";
-  src: url("../../public/fonts/AlbertSans-VariableFont_wght.ttf") format("truetype");
+  src: url(`${import.meta.env.BASE_URL}fonts/AlbertSans-VariableFont_wght.ttf`) format("truetype");
   font-display: swap;
 }
 body {
