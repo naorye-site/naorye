@@ -5,12 +5,12 @@
  */
 
 :root {
-  --brown: #a15136;
   --pink: #f58054;
+  --gray: #7b7a7a;
+  --brown: #a15136;
+  --black: #1e1e1e;
   --purple: #9575a4;
   --white-peach: #fcecd4;
-  --black: #1e1e1e;
-  --gray: #7b7a7a;
   --gray-light: 229, 233, 240;
   --gray-gradient: rgba(var(--gray-light), 50%), #fff;
 }
@@ -26,12 +26,12 @@ html {
 
 @font-face {
   font-family: "RacingSansOne";
-  src: url("/fonts/RacingSansOne-Regular.ttf") format("truetype");
+  src: url("../../public/fonts/RacingSansOne-Regular.ttf") format("truetype");
   font-display: swap;
 }
 @font-face {
   font-family: "AlbertSans";
-  src: url("/fonts/AlbertSans-VariableFont_wght.ttf") format("truetype");
+  src: url("../../public/fonts/AlbertSans-VariableFont_wght.ttf") format("truetype");
   font-display: swap;
 }
 body {
