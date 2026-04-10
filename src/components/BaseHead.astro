@@ -17,9 +17,9 @@ const { title, description } = Astro.props;
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<link rel="icon" type="image/svg+xml" href="/NAORYE.svg" />
-<link rel="icon" href="/NAORYE.ico" />
-<link rel="sitemap" href="/sitemap-index.xml" />
+<link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}NAORYE.svg`} />
+<link rel="icon" href={`${import.meta.env.BASE_URL}NAORYE.ico`} />
+<link rel="sitemap" href={`${import.meta.env.BASE_URL}sitemap-index.xml`} />
 <link
 	rel="alternate"
 	type="application/rss+xml"
@@ -39,3 +39,16 @@ const { title, description } = Astro.props;
 <title>{title}</title>
 <meta name="title" content={title} />
 <meta name="description" content={description} />
+
+<style is:global define:vars={{ base: import.meta.env.BASE_URL }}>
+  @font-face {
+    font-family: "RacingSansOne";
+    src: url(var(--base)fonts/RacingSansOne-Regular.ttf) format("truetype");
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "AlbertSans";
+    src: url(var(--base)fonts/AlbertSans-VariableFont_wght.ttf) format("truetype");
+    font-display: swap;
+  }
+</style>

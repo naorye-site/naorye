@@ -24,16 +24,6 @@ html {
   scrollbar-color: var(--brown) transparent;
 }
 
-@font-face {
-  font-family: "RacingSansOne";
-  src: url(`${import.meta.env.BASE_URL}fonts/RacingSansOne-Regular.ttf`) format("truetype");
-  font-display: swap;
-}
-@font-face {
-  font-family: "AlbertSans";
-  src: url(`${import.meta.env.BASE_URL}fonts/AlbertSans-VariableFont_wght.ttf`) format("truetype");
-  font-display: swap;
-}
 body {
   font-family: "AlbertSans", sans-serif;
   padding: 0;
