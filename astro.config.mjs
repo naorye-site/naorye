@@ -2,7 +2,6 @@
 import sitemap from "@astrojs/sitemap";
 import { defineConfig } from "astro/config";
 import sanity from "@sanity/astro";
-
 import icon from "astro-icon";
 
 // https://astro.build/config

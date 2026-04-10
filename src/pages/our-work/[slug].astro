@@ -1,1 +1,210 @@
-hi manis ;)
+---
+import { sanityClient } from "sanity:client";
+import BaseHead from "../../components/BaseHead.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+
+const { SITE_TITLE, SITE_DESCRIPTION } = await import("../../consts");
+
+// GROQ get a portfolio detail by slug
+const PORTOFOLIO_DETAIL_QUERY = `*[_type == "Portfolio" && slug.current == $slug][0] {
+    _id, 
+    uploadDate,
+    themeName, 
+    slug, 
+    collectionName,
+    "coverUrl": portfolioCover.asset->url,
+    "imageUrls": portfolioImages[].asset->url,
+    versionAvailable,
+    useCases,
+    software,
+    formatAvailable,
+    moreInformation
+}`;
+
+// Get all slugs for static generation
+export async function getStaticPaths():Promise<{ params:{ slug: string }}[]> {
+  const SLUGS_QUERY = `*[_type == "Portfolio"]{ "params": {"slug": slug.current} }`;
+  return await sanityClient.fetch(SLUGS_QUERY);
+}
+// Fetch portfolio detail based on slug
+const portfolio = await sanityClient.fetch(PORTOFOLIO_DETAIL_QUERY, {slug: Astro.params.slug});
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Header />
+    <div class="title">
+      <p>{portfolio?.uploadDate}</p>
+      <h1>{portfolio?.themeName}</h1>
+      <p>{portfolio?.collectionName} collection</p>
+    </div>
+    <div class="galleryContainer">
+      <div class="slides">
+        {
+          portfolio?.coverUrl && (
+            <img src={portfolio.coverUrl} alt={portfolio?.themeName} />
+          )
+        }
+        {
+          portfolio?.imageUrls?.map((url: any) => (
+            <img src={url} alt="Portfolio image" />
+          ))
+        }
+        <div class="scrollTag">
+          <p>Scroll</p>
+        </div>
+      </div>
+    </div>
+    <div class="information">
+      <div class="data">
+        <p>Version available</p>
+        <div class="tags">
+          {
+            portfolio?.versionAvailable?.map((v: any) => (
+              <span class="tag">{v}</span>
+            ))
+          }
+        </div>
+      </div>
+      <div class="data">
+        <p>Use Case</p>
+        <div class="tags">
+          {portfolio?.useCases?.map((u: any) => <span class="tag">{u}</span>)}
+        </div>
+      </div>
+      <div class="data">
+        <p>Software</p>
+        <div class="tags">
+          {portfolio?.software?.map((s: any) => <span class="tag">{s}</span>)}
+        </div>
+      </div>
+      <div class="data">
+        <p>Format available</p>
+        <div class="tags">
+          {
+            portfolio?.formatAvailable?.map((f: any) => (
+              <span class="tag">{f}</span>
+            ))
+          }
+        </div>
+      </div>
+      <div class="data">
+        <p>More information</p>
+        <div class="tags">
+          {
+            portfolio?.moreInformation?.map((m: any) => (
+              <span class="tag">{m}</span>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+    <Footer />
+  </body>
+</html>
+<style>
+  h1,
+  p {
+    margin-block: 0;
+  }
+  body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  footer {
+    margin-top: auto;
+  }
+  .title,
+  .galleryContainer,
+  .information {
+    margin-block-end: 2.5em;
+  }
+  .title {
+    gap: 0.5rem;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+    margin-block-start: 2.5em;
+  }
+  .galleryContainer {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    .slides {
+      width: 100%;
+      height: 80vh;
+      max-height: 600px;
+      overflow-y: scroll;
+      border-radius: 20px;
+      scrollbar-width: thin;
+      scroll-behavior: smooth;
+      scroll-snap-type: y mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-color: var(--white-peach) transparent;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        scroll-snap-align: start;
+      }
+      .scrollTag {
+        top: 50%;
+        right: -3px;
+        position: absolute;
+        color: var(--brown);
+        transform: rotate(90deg);
+        padding: 0 10px 10px 10px;
+        border-end-end-radius: 100px;
+        border-end-start-radius: 100px;
+        background-color: var(--white-peach);
+        font-family: 'RacingSansOne', sans-serif;
+      }
+    }
+  }
+  .information {
+    gap: 0.5em;
+    display: flex;
+    flex-direction: column;
+    .data {
+      display: flex;
+      width: fit-content;
+      flex-direction: column;
+      width: -webkit-fill-available;
+      p {
+        font-size: 1.2em;
+      }
+      .tags {
+        display: flex;
+        row-gap: 0.3em;
+        flex-wrap: wrap;
+        column-gap: 0.1em;
+
+        span {
+          padding: 0.2em 0.6em;
+          margin-inline: 0.3em;
+          border-radius: 14px;
+          color: var(--white-peach);
+          background-color: var(--brown);
+        }
+      }
+    }
+  }
+
+  @media (width < 320px) {
+    .tags {
+      width: fit-content;
+      flex-direction: column;
+      span {
+        width: fit-content;
+      }
+    }
+  }
+</style>

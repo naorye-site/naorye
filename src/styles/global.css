@@ -12,12 +12,18 @@
   --black: #1e1e1e;
   --gray: #7b7a7a;
   --gray-light: 229, 233, 240;
-  --gray-dark: 34, 41, 57;
   --gray-gradient: rgba(var(--gray-light), 50%), #fff;
-  --box-shadow:
-    0 2px 6px rgba(var(--gray), 25%), 0 8px 24px rgba(var(--gray), 33%),
-    0 16px 32px rgba(var(--gray), 33%);
 }
+
+* {
+  overflow-wrap: break-word;
+}
+html {
+  scrollbar-width: thin;
+  scroll-behavior: smooth;
+  scrollbar-color: var(--brown) transparent;
+}
+
 @font-face {
   font-family: "RacingSansOne";
   src: url("/fonts/RacingSansOne-Regular.ttf") format("truetype");
@@ -31,16 +37,19 @@
 body {
   font-family: "AlbertSans", sans-serif;
   padding: 0;
-  margin-block: 5rem;
-  margin-inline: clamp(1rem, 0.5714285714285714rem + 2.142857142857143vw, 4rem);
-  text-align: left;
-  background: linear-gradient(var(--gray-gradient)) no-repeat;
-  background-size: 100% 600px;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  color: var(--gray);
   font-size: 20px;
   line-height: 1.7;
+  text-align: left;
+  color: var(--gray);
+  display: flex;
+  min-height: 100vh;
+  margin-block: 0;
+  flex-direction: column;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  background-size: 100% 600px;
+  background: linear-gradient(var(--gray-gradient)) no-repeat;
+  margin-inline: clamp(1rem, 0.5714285714285714rem + 2.142857142857143vw, 4rem);
 }
 
 #container {
@@ -77,7 +86,10 @@ h5 {
   font-size: 1.25em;
 }
 p,
-a, strong, li {
+a,
+strong,
+li,
+span {
   font-size: 0.75rem;
   font-size: clamp(
     0.75rem,
@@ -98,6 +110,9 @@ p {
 .prose p {
   margin-bottom: 2em;
 }
+b {
+  color: var(--purple);
+}
 textarea {
   width: 100%;
   font-size: 16px;
@@ -115,8 +130,8 @@ img {
 }
 code {
   padding: 2px 5px;
-  background-color: rgb(var(--gray-light));
   border-radius: 2px;
+  background-color: rgb(var(--gray-light));
 }
 pre {
   padding: 1.5em;

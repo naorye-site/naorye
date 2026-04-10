@@ -8,9 +8,6 @@ export const portfolioType = defineType({
     defineField({
       name: 'uploadDate',
       type: 'date',
-      options: {
-        dateFormat: 'DD-MMMM-YY',
-      },
     }),
     defineField({
       name: 'themeName',
@@ -29,17 +26,23 @@ export const portfolioType = defineType({
       type: 'string',
     }),
     defineField({
-      name: 'description',
-      type: 'string',
-    }),
-    defineField({
       name: 'portfolioCover',
       type: 'image',
+      options: {
+        hotspot: true,
+      },
     }),
     defineField({
       name: 'portfolioImages',
       type: 'array',
-      of: [{type: 'image'}],
+      of: [
+        {
+          type: 'image',
+          options: {
+            hotspot: true,
+          },
+        },
+      ],
       validation: (Rule) => Rule.max(20).required(),
     }),
     defineField({

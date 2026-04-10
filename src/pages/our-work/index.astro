@@ -12,9 +12,10 @@ const PORTFOLIO_QUERY = `*[_type == "Portfolio"] {
     themeName, 
     slug, 
     uploadDate,
-    "imageUrl": portfolioCover.asset->url + "?w=600&auto=format"
+    "coverUrl": portfolioCover.asset->url
  }`;
 
+// Fetch all portfolios to listing in page
 const portfolios = await sanityClient.fetch<SanityDocument[]>(PORTFOLIO_QUERY);
 ---
 
@@ -32,9 +33,9 @@ const portfolios = await sanityClient.fetch<SanityDocument[]>(PORTFOLIO_QUERY);
           portfolios.map((portfolio: SanityDocument) => (
             <a href={`/our-work/${portfolio.slug.current}`}>
               <div class="card">
-                {portfolio.imageUrl && (
+                {portfolio.coverUrl && (
                   <div class="image">
-                    <img src={portfolio.imageUrl} alt={portfolio.themeName} />
+                    <img src={portfolio.coverUrl} alt={portfolio.themeName} />
                   </div>
                 )}
                 <div class="cardDetail">
@@ -84,6 +85,9 @@ const portfolios = await sanityClient.fetch<SanityDocument[]>(PORTFOLIO_QUERY);
       justify-content: space-between;
       .cardTitle {
         margin: 0;
+      }
+      strong {
+        color: var(--brown);
       }
       .date {
         margin: 0;
