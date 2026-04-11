@@ -27,7 +27,7 @@ const portfolios = await sanityClient.fetch<SanityDocument[]>(PORTFOLIO_QUERY);
   <body>
     <Header />
     <main>
-      <h1>OUR WORK</h1>
+      <h1 style="margin-top: 2.5em;">OUR WORK</h1>
       <div id="cardContainer">
         {
           portfolios.map((portfolio: SanityDocument) => (

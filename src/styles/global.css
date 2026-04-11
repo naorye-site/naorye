@@ -95,6 +95,7 @@ p {
 }
 b {
   color: var(--brown);
+  font-style: italic;
 }
 textarea {
   width: 100%;

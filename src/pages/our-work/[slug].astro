@@ -175,19 +175,20 @@ const portfolio = await sanityClient.fetch(PORTOFOLIO_DETAIL_QUERY, {slug: Astro
     }
   }
   .information {
-    gap: 0.5em;
+    gap: 1em;
     display: flex;
     flex-direction: column;
     margin-left: 1em;
     .data {
+      gap: 0.5em;
       display: flex;
+      align-items:start;
       width: fit-content;
       flex-direction: column;
-      align-items:start;
       width: -webkit-fill-available;
       .tags {
         display: flex;
-        row-gap: 0.3em;
+        row-gap: .5em;
         flex-wrap: wrap;
         column-gap: 0.1em;
         span {
@@ -213,9 +214,9 @@ const portfolio = await sanityClient.fetch(PORTOFOLIO_DETAIL_QUERY, {slug: Astro
         overflow-y: scroll;
         flex-direction: column;
         scroll-snap-type: y mandatory;
-      }
-      .scrollTag {
-        right: 50px;
+        .scrollTag {
+          right: -1px;
+        }
       }
     }
     .information {

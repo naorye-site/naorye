@@ -10,10 +10,10 @@ import HeaderLink from "./HeaderLink.astro";
       </HeaderLink>
       <div class="navLinks">
         <HeaderLink href={`${import.meta.env.BASE_URL}/who-faq`}
-          >WHO-FAQ</HeaderLink
+          >( ABOUT )</HeaderLink
         >
         <HeaderLink href={`${import.meta.env.BASE_URL}/our-work`}
-          >OUR WORK</HeaderLink
+          >( OUR WORK )</HeaderLink
         >
       </div>
     </div>
@@ -36,19 +36,13 @@ import HeaderLink from "./HeaderLink.astro";
     flex-direction: column;
 
     .navLinks {
-      gap: 20px;
+      gap: 10px;
       display: flex;
-      flex-direction: column;
       align-items: center;
+      flex-direction: column;
     }
 
     a {
-      font-size: clamp(
-        1.4rem,
-        1.3142857142857143rem + 0.4285714285714286vw,
-        2rem
-      );
-      font-weight: 600;
       color: var(--gray);
       text-decoration: none;
     }
@@ -59,7 +53,7 @@ import HeaderLink from "./HeaderLink.astro";
       flex-direction: row;
       justify-content: space-between;
       .navLinks {
-        gap: 60px;
+        gap: 20px;
         display: flex;
         flex-direction: row;
       }
