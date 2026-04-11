@@ -17,8 +17,8 @@ const { title, description } = Astro.props;
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<link rel="icon" type="image/x-icon" href="/NAORYE.ico" />
-<link rel="sitemap" href="/sitemap-index.xml" />
+<link rel="icon" type="image/x-icon" href="/naorye/NAORYE.ico" />
+<link rel="sitemap" href="/naorye/sitemap-index.xml" />
 <link
 	rel="alternate"
 	type="application/rss+xml"
@@ -28,8 +28,8 @@ const { title, description } = Astro.props;
 <meta name="generator" content={Astro.generator} />
 
 <!-- Font preloads -->
-<link rel="preload" href="/fonts/RacingSansOne-Regular.ttf" as="font" type="font/ttf" crossorigin />
-<link rel="preload" href="/fonts/AlbertSans-VariableFont_wght.ttf" as="font" type="font/ttf" crossorigin />
+<link rel="preload" href="/naorye/fonts/RacingSansOne-Regular.ttf" as="font" type="font/ttf" crossorigin />
+<link rel="preload" href="/naorye/fonts/AlbertSans-VariableFont_wght.ttf" as="font" type="font/ttf" crossorigin />
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
@@ -42,12 +42,12 @@ const { title, description } = Astro.props;
 <style is:global>
   @font-face {
     font-family: RacingSansOne;
-    src: url(/fonts/RacingSansOne-Regular.ttf) format("truetype");
+    src: url(/naorye/fonts/RacingSansOne-Regular.ttf) format("truetype");
     font-display: swap;
   }
   @font-face {
     font-family: AlbertSans;
-    src: url(/fonts/AlbertSans-VariableFont_wght.ttf) format("truetype");
+    src: url(/naorye/fonts/AlbertSans-VariableFont_wght.ttf) format("truetype");
     font-display: swap;
   }
 </style>
