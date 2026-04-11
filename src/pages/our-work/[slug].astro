@@ -39,9 +39,11 @@ const portfolio = await sanityClient.fetch(PORTOFOLIO_DETAIL_QUERY, {slug: Astro
   <body>
     <Header />
     <div class="title">
-      <p>{portfolio?.uploadDate}</p>
       <h1>{portfolio?.themeName}</h1>
-      <p>{portfolio?.collectionName} collection</p>
+      <div class="titleDetail">
+        <p>{portfolio?.uploadDate}</p>
+        <p>COLLECTION OF {portfolio?.collectionName}</p>
+      </div>
     </div>
     <div class="galleryContainer">
       <div class="slides">
@@ -112,26 +114,23 @@ const portfolio = await sanityClient.fetch(PORTOFOLIO_DETAIL_QUERY, {slug: Astro
   p {
     margin-block: 0;
   }
-  body {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
-  footer {
-    margin-top: auto;
-  }
   .title,
   .galleryContainer,
   .information {
-    margin-block-end: 2.5em;
+    margin-block-end: 2em;
   }
   .title {
-    gap: 0.5rem;
+    gap: 2rem;
     display: flex;
     text-align: center;
     flex-direction: column;
     justify-content: center;
-    margin-block-start: 2.5em;
+    margin-block-start: 2em;
+    .titleDetail {
+      gap: 20px;
+      display: flex;
+      flex-direction: column;
+    }
   }
   .galleryContainer {
     display: flex;
@@ -139,25 +138,29 @@ const portfolio = await sanityClient.fetch(PORTOFOLIO_DETAIL_QUERY, {slug: Astro
     justify-content: center;
     .slides {
       width: 100%;
-      height: 80vh;
-      max-height: 600px;
-      overflow-y: scroll;
+      height: 76vh;
+      max-height: 480px;
       border-radius: 20px;
+      display: flex;
+      flex-direction: row;
+      overflow-x: scroll;
+      overflow-y: hidden;
       scrollbar-width: thin;
       scroll-behavior: smooth;
-      scroll-snap-type: y mandatory;
+      scroll-snap-type: x mandatory;
       -webkit-overflow-scrolling: touch;
       scrollbar-color: var(--white-peach) transparent;
       img {
-        width: 100%;
         height: 100%;
-        object-fit: cover;
+        min-width: 100%;
         display: block;
-        scroll-snap-align: start;
+        flex-shrink: 0;
+        object-fit: cover;
+        scroll-snap-align: center;
       }
       .scrollTag {
-        top: 50%;
-        right: -3px;
+        top: 45%;
+        right:-14px;
         position: absolute;
         color: var(--brown);
         transform: rotate(90deg);
@@ -188,14 +191,22 @@ const portfolio = await sanityClient.fetch(PORTOFOLIO_DETAIL_QUERY, {slug: Astro
         column-gap: 0.1em;
 
         span {
+          border-radius: 14px;
           padding: 0.2em 0.6em;
           margin-inline: 0.3em;
-          border-radius: 14px;
           color: var(--white-peach);
           background-color: var(--brown);
         }
       }
     }
+  }
+
+  @media (width >= 500px) {
+    .title .titleDetail {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    
   }
 
   @media (width < 320px) {

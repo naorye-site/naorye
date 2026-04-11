@@ -5,28 +5,40 @@ import HeaderLink from "./HeaderLink.astro";
 <header>
   <nav>
     <div class="internal-links">
-      <HeaderLink href={`${import.meta.env.BASE_URL}/who-faq`}>WHO-FAQ</HeaderLink>
       <HeaderLink href={import.meta.env.BASE_URL}>
         <img src="/naorye/NAORYE.svg" alt="Home" class="home-icon" />
       </HeaderLink>
-      <HeaderLink href={`${import.meta.env.BASE_URL}/our-work`}>OUR WORK</HeaderLink>
+      <div class="navLinks">
+        <HeaderLink href={`${import.meta.env.BASE_URL}/who-faq`}
+          >WHO-FAQ</HeaderLink
+        >
+        <HeaderLink href={`${import.meta.env.BASE_URL}/our-work`}
+          >OUR WORK</HeaderLink
+        >
+      </div>
     </div>
   </nav>
 </header>
 <style>
   .home-icon {
     display: block;
-    max-width: 5rem;
+    max-width: 4rem;
   }
   nav {
     margin-top: 2em;
   }
   nav .internal-links {
-    gap: 1.5em;
+    gap: 1em;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     flex-direction: column;
+
+    .navLinks {
+      gap: 20px;
+      display: flex;
+      flex-direction: column;
+    }
 
     a {
       font-size: clamp(
@@ -44,6 +56,11 @@ import HeaderLink from "./HeaderLink.astro";
     nav .internal-links {
       flex-direction: row;
       justify-content: space-between;
+      .navLinks {
+        gap: 60px;
+        display: flex;
+        flex-direction: row;
+      }
     }
   }
 </style>

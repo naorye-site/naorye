@@ -32,8 +32,8 @@ body {
   text-align: left;
   color: var(--gray);
   display: flex;
-  min-height: 100vh;
   margin-block: 0;
+  min-height: 100vh;
   flex-direction: column;
   word-wrap: break-word;
   overflow-wrap: break-word;
@@ -80,12 +80,7 @@ a,
 strong,
 li,
 span {
-  font-size: 0.75rem;
-  font-size: clamp(
-    0.75rem,
-    0.7142857142857143rem + 0.17857142857142858vw,
-    1rem
-  );
+  font-size: clamp(0.8rem, 2vw + 0.25rem, 1rem);
 }
 a {
   color: var(--gray);
@@ -101,7 +96,7 @@ p {
   margin-bottom: 2em;
 }
 b {
-  color: var(--purple);
+  color: var(--brown);
 }
 textarea {
   width: 100%;
