@@ -17,8 +17,8 @@ const { title, description } = Astro.props;
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<link rel="icon" href={`${import.meta.env.BASE_URL}NAORYE.ico`} />
-<link rel="sitemap" href={`${import.meta.env.BASE_URL}sitemap-index.xml`} />
+<link rel="icon" href={`${import.meta.env.BASE_URL}/public/NAORYE.ico`} />
+<link rel="sitemap" href={`${import.meta.env.BASE_URL}/public/sitemap-index.xml`} />
 <link
 	rel="alternate"
 	type="application/rss+xml"
@@ -28,8 +28,8 @@ const { title, description } = Astro.props;
 <meta name="generator" content={Astro.generator} />
 
 <!-- Font preloads -->
-<link rel="preload" href={`${import.meta.env.BASE_URL}fonts/RacingSansOne-Regular.ttf`} as="font" type="font/ttf" crossorigin />
-<link rel="preload" href={`${import.meta.env.BASE_URL}fonts/AlbertSans-VariableFont_wght.ttf`} as="font" type="font/ttf" crossorigin />
+<link rel="preload" href={`${import.meta.env.BASE_URL}/public/fonts/RacingSansOne-Regular.ttf`} as="font" type="font/ttf" crossorigin />
+<link rel="preload" href={`${import.meta.env.BASE_URL}/public/fonts/AlbertSans-VariableFont_wght.ttf`} as="font" type="font/ttf" crossorigin />
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
@@ -42,12 +42,12 @@ const { title, description } = Astro.props;
 <style is:global define:vars={{ base: import.meta.env.BASE_URL }}>
   @font-face {
     font-family: "RacingSansOne";
-    src: url(var(--base)fonts/RacingSansOne-Regular.ttf) format("truetype");
+    src: url(var(--base)/public/fonts/RacingSansOne-Regular.ttf) format("truetype");
     font-display: swap;
   }
   @font-face {
     font-family: "AlbertSans";
-    src: url(var(--base)fonts/AlbertSans-VariableFont_wght.ttf) format("truetype");
+    src: url(var(--base)/public/fonts/AlbertSans-VariableFont_wght.ttf) format("truetype");
     font-display: swap;
   }
 </style>
