@@ -15,9 +15,6 @@
   --gray-gradient: rgba(var(--gray-light), 50%), #fff;
 }
 
-* {
-  overflow-wrap: break-word;
-}
 html {
   scrollbar-width: thin;
   scroll-behavior: smooth;
@@ -25,20 +22,21 @@ html {
 }
 
 body {
-  font-family: "AlbertSans", sans-serif;
   padding: 0;
-  font-size: 20px;
-  line-height: 1.7;
-  text-align: left;
-  color: var(--gray);
+  hyphens: auto;
   display: flex;
+  font-size: 20px;
   margin-block: 0;
+  text-align: left;
+  line-height: 1.7;
   min-height: 100vh;
-  flex-direction: column;
+  color: var(--gray);
   word-wrap: break-word;
+  flex-direction: column;
   overflow-wrap: break-word;
   background-size: 100% 600px;
-  background: linear-gradient(var(--gray-gradient)) no-repeat;
+  font-family: "AlbertSans", sans-serif;
+  /* background: linear-gradient(var(--gray-gradient)) no-repeat; */
   margin-inline: clamp(1rem, 0.5714285714285714rem + 2.142857142857143vw, 4rem);
 }
 
@@ -80,7 +78,7 @@ a,
 strong,
 li,
 span {
-  font-size: clamp(0.8rem, 2vw + 0.25rem, 1rem);
+  font-size: clamp(1rem, 0.978813559322034rem + 0.1694915254237288vw, 1.25rem);
 }
 a {
   color: var(--gray);

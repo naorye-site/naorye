@@ -23,12 +23,12 @@ const PORTOFOLIO_DETAIL_QUERY = `*[_type == "Portfolio" && slug.current == $slug
 }`;
 
 // Get all slugs for static generation
-export async function getStaticPaths():Promise<{ params:{ slug: string }}[]> {
+export async function getStaticPaths(): Promise<{ params: { slug: string } }[]> { 
   const SLUGS_QUERY = `*[_type == "Portfolio"]{ "params": {"slug": slug.current} }`;
   return await sanityClient.fetch(SLUGS_QUERY);
 }
 // Fetch portfolio detail based on slug
-const portfolio = await sanityClient.fetch(PORTOFOLIO_DETAIL_QUERY, {slug: Astro.params.slug});
+const portfolio = await sanityClient.fetch(PORTOFOLIO_DETAIL_QUERY, {slug: Astro.params.slug });
 ---
 
 <!doctype html>
@@ -39,7 +39,9 @@ const portfolio = await sanityClient.fetch(PORTOFOLIO_DETAIL_QUERY, {slug: Astro
   <body>
     <Header />
     <div class="title">
-      <h1>{portfolio?.themeName}</h1>
+      <div>
+        <h1>{portfolio?.themeName}</h1>
+      </div>
       <div class="titleDetail">
         <p>{portfolio?.uploadDate}</p>
         <p>COLLECTION OF {portfolio?.collectionName}</p>
@@ -64,7 +66,7 @@ const portfolio = await sanityClient.fetch(PORTOFOLIO_DETAIL_QUERY, {slug: Astro
     </div>
     <div class="information">
       <div class="data">
-        <p>Version available</p>
+        <p>Version available : </p>
         <div class="tags">
           {
             portfolio?.versionAvailable?.map((v: any) => (
@@ -74,19 +76,19 @@ const portfolio = await sanityClient.fetch(PORTOFOLIO_DETAIL_QUERY, {slug: Astro
         </div>
       </div>
       <div class="data">
-        <p>Use Case</p>
+        <p>Use Case : </p>
         <div class="tags">
           {portfolio?.useCases?.map((u: any) => <span class="tag">{u}</span>)}
         </div>
       </div>
       <div class="data">
-        <p>Software</p>
+        <p>Software : </p>
         <div class="tags">
           {portfolio?.software?.map((s: any) => <span class="tag">{s}</span>)}
         </div>
       </div>
       <div class="data">
-        <p>Format available</p>
+        <p>Format available : </p>
         <div class="tags">
           {
             portfolio?.formatAvailable?.map((f: any) => (
@@ -96,7 +98,7 @@ const portfolio = await sanityClient.fetch(PORTOFOLIO_DETAIL_QUERY, {slug: Astro
         </div>
       </div>
       <div class="data">
-        <p>More information</p>
+        <p>More information : </p>
         <div class="tags">
           {
             portfolio?.moreInformation?.map((m: any) => (
@@ -117,7 +119,7 @@ const portfolio = await sanityClient.fetch(PORTOFOLIO_DETAIL_QUERY, {slug: Astro
   .title,
   .galleryContainer,
   .information {
-    margin-block-end: 2em;
+    margin-block-end: 4em;
   }
   .title {
     gap: 2rem;
@@ -149,7 +151,7 @@ const portfolio = await sanityClient.fetch(PORTOFOLIO_DETAIL_QUERY, {slug: Astro
       scroll-behavior: smooth;
       scroll-snap-type: x mandatory;
       -webkit-overflow-scrolling: touch;
-      scrollbar-color: var(--white-peach) transparent;
+      scrollbar-color: var(--gray) transparent;
       img {
         height: 100%;
         min-width: 100%;
@@ -160,7 +162,7 @@ const portfolio = await sanityClient.fetch(PORTOFOLIO_DETAIL_QUERY, {slug: Astro
       }
       .scrollTag {
         top: 45%;
-        right:-14px;
+        right: -14px;
         position: absolute;
         color: var(--brown);
         transform: rotate(90deg);
@@ -168,7 +170,7 @@ const portfolio = await sanityClient.fetch(PORTOFOLIO_DETAIL_QUERY, {slug: Astro
         border-end-end-radius: 100px;
         border-end-start-radius: 100px;
         background-color: var(--white-peach);
-        font-family: 'RacingSansOne', sans-serif;
+        font-family: "RacingSansOne", sans-serif;
       }
     }
   }
@@ -176,26 +178,25 @@ const portfolio = await sanityClient.fetch(PORTOFOLIO_DETAIL_QUERY, {slug: Astro
     gap: 0.5em;
     display: flex;
     flex-direction: column;
+    margin-left: 1em;
     .data {
       display: flex;
       width: fit-content;
       flex-direction: column;
+      align-items:start;
       width: -webkit-fill-available;
-      p {
-        font-size: 1.2em;
-      }
       .tags {
         display: flex;
         row-gap: 0.3em;
         flex-wrap: wrap;
         column-gap: 0.1em;
-
         span {
+          font-size: 16px;
           border-radius: 14px;
           padding: 0.2em 0.6em;
           margin-inline: 0.3em;
-          color: var(--white-peach);
-          background-color: var(--brown);
+          color: var(--black);
+          border: 1px solid var(--gray);
         }
       }
     }
@@ -203,10 +204,26 @@ const portfolio = await sanityClient.fetch(PORTOFOLIO_DETAIL_QUERY, {slug: Astro
 
   @media (width >= 500px) {
     .title .titleDetail {
-        flex-direction: row;
-        justify-content: space-between;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    .galleryContainer {
+      .slides {
+        overflow-x: hidden;
+        overflow-y: scroll;
+        flex-direction: column;
+        scroll-snap-type: y mandatory;
       }
-    
+      .scrollTag {
+        right: 50px;
+      }
+    }
+    .information {
+      .data {
+        flex-direction: row;
+        align-items: center;
+      }
+    }
   }
 
   @media (width < 320px) {
