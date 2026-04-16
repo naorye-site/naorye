@@ -7,16 +7,16 @@ import Header from "../../components/Header.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../../consts";
 
 // GROQ get all portfolio
-const PORTFOLIO_QUERY = `*[_type == "Portfolio"] {
+const portfolios = await sanityClient.fetch<SanityDocument[]>(`*[_type == "Portfolio"] | order(uploadDate desc) {
     _id, 
     themeName, 
     slug, 
     uploadDate,
     "coverUrl": portfolioCover.asset->url
- }`;
+  }
+`);
 
-// Fetch all portfolios to listing in page
-const portfolios = await sanityClient.fetch<SanityDocument[]>(PORTFOLIO_QUERY);
+if (!portfolios || portfolios.length === 0) { portfolios = []; }
 ---
 
 <!doctype html>
